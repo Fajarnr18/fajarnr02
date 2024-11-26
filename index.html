@@ -2,23 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible=IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contoh GUI Tabel</title>
+    <title>Form Login</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+        .login-container h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
             color: #333;
         }
-        .container {
-            text-align: center;
-            margin-top: 50px;
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
         }
-        button {
-            padding: 12px 24px;
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .login-button {
+            width: 100%;
+            padding: 10px;
             font-size: 16px;
             font-weight: bold;
             color: #fff;
@@ -28,76 +57,47 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        button:hover {
+        .login-button:hover {
             background-color: #0056b3;
         }
-        #pesan {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #007BFF;
-        }
-        .table-container {
-            margin: 20px auto;
-            width: 80%;
-            text-align: left;
-            border-collapse: collapse;
-        }
-        table {
-            width: 100%;
-            border: 1px solid #ddd;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 12px;
-            text-align: center;
-            border: 1px solid #ddd;
-        }
-        th {
-            background-color: #007BFF;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <button onclick="tampilkanPesan()">Klik Saya</button>
-        <p id="pesan"></p>
-    </div>
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Ali</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Budi</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Citra</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Dina</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Masukkan username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Masukkan password" required>
+            </div>
+            <button type="button" class="login-button" onclick="login()">Login</button>
+            <p id="errorMessage" class="error-message">Username atau password salah</p>
+        </form>
     </div>
 
     <script>
-        function tampilkanPesan() {
-            document.getElementById('pesan').textContent = 'Halo, Anda telah mengklik tombol!';
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Simulasi login dengan username dan password sederhana
+            if (username === 'admin' && password === '12345') {
+                alert('Login berhasil! Selamat datang, ' + username + '!');
+                errorMessage.style.display = 'none';
+            } else {
+                errorMessage.style.display = 'block';
+            }
         }
     </script>
 </body>
