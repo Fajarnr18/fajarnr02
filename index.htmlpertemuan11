@@ -15,6 +15,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            flex-direction: column;
         }
         .login-container {
             background-color: #fff;
@@ -71,6 +72,24 @@
         .success-message {
             color: green;
         }
+        .table-container {
+            margin-top: 20px;
+            display: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        table th {
+            background-color: #007BFF;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -89,12 +108,39 @@
             <p id="message" class="message"></p>
         </form>
     </div>
+    
+    <div class="table-container" id="tableContainer">
+        <h2>Data Pengguna</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Admin</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>User1</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>User2</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <script>
         function login() {
-            const username = document.getElementById('fajarnrganteng').value.trim();
-            const password = document.getElementById('rama123').value.trim();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
             const message = document.getElementById('message');
+            const tableContainer = document.getElementById('tableContainer');
 
             // Reset pesan sebelumnya
             message.style.display = 'none';
@@ -113,10 +159,12 @@
                 message.textContent = 'Login berhasil! Selamat datang, ' + username + '!';
                 message.classList.add('success-message');
                 message.style.display = 'block';
+                tableContainer.style.display = 'block'; // Tampilkan tabel setelah login berhasil
             } else {
                 message.textContent = 'Username atau password salah!';
                 message.classList.add('error-message');
                 message.style.display = 'block';
+                tableContainer.style.display = 'none'; // Sembunyikan tabel jika login gagal
             }
         }
     </script>
