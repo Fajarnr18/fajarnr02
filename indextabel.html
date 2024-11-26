@@ -2,189 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible=IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Login</title>
+    <title>Contoh Tabel HTML</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f4f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-        }
-        .login-container {
-            background-color: #fff;
-            padding: 30px 40px;
-            border-radius: 8px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            width: 350px;
-        }
-        .login-container h1 {
-            margin-bottom: 20px;
-            font-size: 24px;
-            color: #333;
-        }
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        .login-button {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            color: #fff;
-            background-color: #28a745;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .login-button:hover {
-            background-color: #218838;
-        }
-        .message {
-            font-size: 14px;
-            margin-top: 10px;
-            display: none;
-        }
-        .error-message {
-            color: red;
-        }
-        .success-message {
-            color: green;
-        }
-        .table-container {
-            margin-top: 20px;
-            display: none;
-            width: 80%;
-        }
         table {
-            width: 100%;
+            width: 50%;
             border-collapse: collapse;
-            margin: 20px 0;
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            text-align: center;
         }
-        table th, table td {
-            padding: 12px 15px;
-            text-align: left;
+        th, td {
+            border: 1px solid #333;
+            padding: 10px;
         }
-        table th {
-            background-color: #007BFF;
-            color: #fff;
-        }
-        table tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-        table tr:nth-child(odd) {
-            background-color: #e9ecef;
-        }
-        table tr:hover {
-            background-color: #d6eaf8;
-        }
-        .table-header {
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: #333;
+        th {
+            background-color: #f4f4f4;
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h1>Login</h1>
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Masukkan username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Masukkan password" required>
-            </div>
-            <button type="button" class="login-button" onclick="login()">Login</button>
-            <p id="message" class="message"></p>
-        </form>
-    </div>
-    
-    <div class="table-container" id="tableContainer">
-        <p class="table-header">Daftar Tugas Pengguna</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nama</th>
-                    <th>Tugas</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Admin</td>
-                    <td>Mengelola sistem</td>
-                </tr>
-                <tr>
-                    <td>User1</td>
-                    <td>Input data laporan</td>
-                </tr>
-                <tr>
-                    <td>User2</td>
-                    <td>Memeriksa validitas data</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <script>
-        function login() {
-            const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value.trim();
-            const message = document.getElementById('message');
-            const tableContainer = document.getElementById('tableContainer');
-
-            // Reset pesan sebelumnya
-            message.style.display = 'none';
-            message.classList.remove('error-message', 'success-message');
-
-            // Validasi input kosong
-            if (!username || !password) {
-                message.textContent = 'Harap isi semua bidang!';
-                message.classList.add('error-message');
-                message.style.display = 'block';
-                return;
-            }
-
-            // Validasi username dan password
-            if (username === 'admin' && password === '12345') {
-                message.textContent = 'Login berhasil! Selamat datang, ' + username + '!';
-                message.classList.add('success-message');
-                message.style.display = 'block';
-                tableContainer.style.display = 'block'; // Tampilkan tabel setelah login berhasil
-            } else {
-                message.textContent = 'Username atau password salah!';
-                message.classList.add('error-message');
-                message.style.display = 'block';
-                tableContainer.style.display = 'none'; // Sembunyikan tabel jika login gagal
-            }
-        }
-    </script>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Nama</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Satu</td>
+               
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Dua</td>
+                
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Tiga</td>
+                
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
