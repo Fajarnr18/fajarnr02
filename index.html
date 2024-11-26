@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contoh GUI Sederhana</title>
+    <title>Contoh GUI Tabel</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,39 +15,90 @@
         }
         .container {
             text-align: center;
-            margin-top: 100px;
+            margin: 50px auto;
+            width: 80%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1rem;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            text-align: center;
+            padding: 12px;
+        }
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
         }
         button {
             padding: 12px 24px;
             font-size: 1rem;
             font-weight: bold;
             color: #fff;
-            background-color: #007BFF;
+            background-color: #28a745;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
         button:hover {
-            background-color: #0056b3;
-        }
-        .message {
-            margin-top: 20px;
-            font-size: 1.2rem;
-            color: #007BFF;
-            padding: 10px;
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <button onclick="tampilkanPesan()">Klik Saya</button>
-        <p id="pesan" class="message"></p>
+        <h1>Contoh GUI dengan Tabel</h1>
+        <button onclick="tambahData()">Tambah Data</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Umur</th>
+                    <th>Kota</th>
+                </tr>
+            </thead>
+            <tbody id="tabel-data">
+                <!-- Baris data akan ditambahkan di sini -->
+            </tbody>
+        </table>
     </div>
 
     <script>
-        function tampilkanPesan() {
-            document.getElementById('pesan').textContent = 'Halo, Anda telah mengklik tombol!';
+        let nomor = 1; // Penanda nomor data
+
+        function tambahData() {
+            // Data dummy yang akan ditambahkan
+            const nama = "Nama " + nomor;
+            const umur = Math.floor(Math.random() * 50) + 20; // Umur acak antara 20-70
+            const kota = "Kota " + nomor;
+
+            // Akses elemen tabel
+            const tabelData = document.getElementById('tabel-data');
+
+            // Buat elemen baris
+            const barisBaru = document.createElement('tr');
+            barisBaru.innerHTML = `
+                <td>${nomor}</td>
+                <td>${nama}</td>
+                <td>${umur}</td>
+                <td>${kota}</td>
+            `;
+
+            // Tambahkan baris ke tabel
+            tabelData.appendChild(barisBaru);
+
+            // Increment nomor data
+            nomor++;
         }
     </script>
 </body>
