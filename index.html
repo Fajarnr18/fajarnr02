@@ -60,11 +60,16 @@
         .login-button:hover {
             background-color: #0056b3;
         }
-        .error-message {
-            color: red;
+        .message {
             font-size: 14px;
             margin-top: 10px;
             display: none;
+        }
+        .error-message {
+            color: red;
+        }
+        .success-message {
+            color: green;
         }
     </style>
 </head>
@@ -81,22 +86,37 @@
                 <input type="password" id="password" name="password" placeholder="Masukkan password" required>
             </div>
             <button type="button" class="login-button" onclick="login()">Login</button>
-            <p id="errorMessage" class="error-message">Username atau password salah</p>
+            <p id="message" class="message"></p>
         </form>
     </div>
 
     <script>
         function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const errorMessage = document.getElementById('errorMessage');
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const message = document.getElementById('message');
 
-            // Simulasi login dengan username dan password sederhana
+            // Reset pesan sebelumnya
+            message.style.display = 'none';
+            message.classList.remove('error-message', 'success-message');
+
+            // Validasi input kosong
+            if (!username || !password) {
+                message.textContent = 'Harap isi semua bidang!';
+                message.classList.add('error-message');
+                message.style.display = 'block';
+                return;
+            }
+
+            // Validasi username dan password
             if (username === 'admin' && password === '12345') {
-                alert('Login berhasil! Selamat datang, ' + username + '!');
-                errorMessage.style.display = 'none';
+                message.textContent = 'Login berhasil! Selamat datang, ' + username + '!';
+                message.classList.add('success-message');
+                message.style.display = 'block';
             } else {
-                errorMessage.style.display = 'block';
+                message.textContent = 'Username atau password salah!';
+                message.classList.add('error-message');
+                message.style.display = 'block';
             }
         }
     </script>
